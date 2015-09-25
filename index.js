@@ -6,7 +6,13 @@ var path = require('path');
 module.exports = {
   name: 'ember-capture',
 
-  included: function included(app, parentAddon) {
+  includedCommands: function() {
+    return {
+      capture: require('./lib/commands/capture')
+    }
+  },
+
+  included: function (app, parentAddon) {
     var target = (parentAddon || app);
     this._super.included(target);
 

@@ -23,7 +23,8 @@ function CaptureClient(config) {
 CaptureClient.prototype.capture = function(endpoint, metadata) {
   var xhr = new XMLHttpRequest();
   xhr.open("POST", this.config.serverURL + endpoint, false);
-  xhr.send();
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhr.send("captureClientID=" + this.config.clientID);
 }
 
 CaptureClient.prototype.captureScreenshot = function(metadata) {
