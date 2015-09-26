@@ -1,19 +1,20 @@
+/* jshint node: true */
 'use strict';
 
 module.exports = {
-  normalizeEntityName: function() {
-    // this prevents an error when the entityName is
-    // not specified (since that doesn't actually matter
-    // to us
-  },
+  normalizeEntityName: function() {},
 
   afterInstall: function() {
-    // return this.addPackagesToProject([
-    //   { name: 'screenshot-server', target: '0.0.x' }
-    // ]).then(function() {
-    //   return this.addBowerPackagesToProject([
-    //     { name: 'screenshot-client', target: '0.0.x' }
-    //   ]);
-    // }.bind(this));
+    // TODO: Install all the drivers for the user.
+    /*
+    Safari, IE
+    http://selenium-release.storage.googleapis.com/
+
+    Chrome
+    http://chromedriver.storage.googleapis.com/
+
+    Opera
+    https://github.com/operasoftware/operachromiumdriver/releases
+    */
   }
 };

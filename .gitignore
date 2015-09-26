@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /tmp
+/capture
 
 # dependencies
 /node_modules
@@ -15,3 +16,4 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+.DS_Store
