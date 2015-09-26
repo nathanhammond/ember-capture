@@ -11,7 +11,7 @@ module.exports = {
     http://selenium-release.storage.googleapis.com/
 
     Chrome
-    http://chromedriver.storage.googleapis.com/
+    http://chromedriver.storage.googleapis.com/index.html
 
     Opera
     https://github.com/operasoftware/operachromiumdriver/releases

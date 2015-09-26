@@ -31,6 +31,10 @@ CaptureClient.prototype.captureScreenshot = function(metadata) {
   return this.capture('screenshot', metadata);
 }
 
+CaptureClient.prototype.captureDone = function(metadata) {
+  return this.capture('done', metadata);
+}
+
 var myCaptureClient = new CaptureClient();
 
 // TODO: Don't capture during application teardown.
@@ -38,3 +42,7 @@ var myCaptureClient = new CaptureClient();
 Ember.run.backburner.options.render = {
   after: function() { myCaptureClient.captureScreenshot(); }
 };
+
+QUnit.done(function(details) {
+  myCaptureClient.captureDone(details);
+});
