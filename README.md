@@ -48,6 +48,49 @@ index 8efeddc..5e0e9af 100644
      }
 ```
 
+[Patch 2 for ember-cli](https://github.com/ember-cli/ember-cli/pull/4899):
+```
+diff --git a/lib/tasks/server/express-server.js b/lib/tasks/server/express-server.js
+index c14fa00..b9f2a80 100644
+--- a/lib/tasks/server/express-server.js
++++ b/lib/tasks/server/express-server.js
+@@ -34,6 +34,10 @@ module.exports = Task.extend({
+     this.emitter.off.apply(this.emitter, arguments);
+   },
+
++  emit: function() {
++    this.emitter.emit.apply(this.emitter, arguments);
++  },
++
+   displayHost: function(specifiedHost) {
+     return specifiedHost || 'localhost';
+   },
+@@ -77,9 +81,12 @@ module.exports = Task.extend({
+     var server = this.httpServer;
+     return new Promise(function(resolve, reject) {
+       server.listen(port, host);
+-      server.on('listening', resolve);
++      server.on('listening', function() {
++        resolve();
++        this.emit('listening');
++      }.bind(this));
+       server.on('error', reject);
+-    });
++    }.bind(this));
+   },
+
+   processAddonMiddlewares: function(options) {
+@@ -143,7 +150,7 @@ module.exports = Task.extend({
+             return this.startHttpServer();
+           }.bind(this))
+           .then(function () {
+-            this.emitter.emit('restart');
++            this.emit('restart');
+             this.ui.writeLine('');
+             this.ui.writeLine(chalk.green('Server restarted.'));
+             this.ui.writeLine('');
+```
+
 [Not-required patch for ember-cli.](https://github.com/ember-cli/ember-cli/pull/4894)
 
 ## Installation

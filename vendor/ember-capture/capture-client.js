@@ -38,11 +38,11 @@ CaptureClient.prototype.captureDone = function(metadata) {
 var myCaptureClient = new CaptureClient();
 
 // TODO: Don't capture during application teardown.
-// TODO: Notify capture-server when all tests are complete.
 Ember.run.backburner.options.render = {
   after: function() { myCaptureClient.captureScreenshot(); }
 };
 
+// Notify capture-server when all tests are complete.
 QUnit.done(function(details) {
   myCaptureClient.captureDone(details);
 });
