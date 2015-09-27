@@ -57,7 +57,8 @@
   },
   "ember-addon": {
     "after": [
-      "ember-cli-qunit"
+      "ember-cli-qunit",
+      "ember-cli-content-security-policy"
     ],
     "configPath": "tests/dummy/config"
   }
