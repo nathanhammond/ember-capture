@@ -45,7 +45,8 @@ module.exports = {
     var options = config.options;
     var project = options.project;
 
-    // TODO: Switch on and off based upon the environment.
+    // Switch on and off based upon the environment.
+    if (options.environment !== 'capture') { return; }
 
     app.use(function(req, res, next) {
       var appConfig = project.config(options.environment);

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(environment) {
-  var results = {
+  var ENV = {
     APP: {
       options: {
         'ember-cli-qunit': {
@@ -12,8 +12,9 @@ module.exports = function(environment) {
     }
   };
 
-  if (environment === 'test') {
-    return results;
+  // FIXME: We should be more clever about how we assign rootElement.
+  if (environment === 'capture' || environment === 'test') {
+    return ENV;
   } else {
     return {};
   }
