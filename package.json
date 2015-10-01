@@ -1,6 +1,6 @@
 {
   "name": "ember-capture",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Automated state capture for Ember applications.",
   "directories": {
     "doc": "doc",
