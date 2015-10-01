@@ -29,13 +29,13 @@
     "ember-cli-htmlbars-inline-precompile": "^0.2.0",
     "ember-cli-ic-ajax": "0.2.1",
     "ember-cli-inject-live-reload": "^1.3.1",
-    "ember-cli-qunit": "^1.0.0",
+    "ember-cli-qunit": "ember-cli/ember-cli-qunit#f12f677a00a7de638a47a401aa74562b17257bcd",
     "ember-cli-release": "0.2.3",
     "ember-cli-sri": "^1.0.3",
     "ember-cli-uglify": "^1.2.0",
+    "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.3",
-    "ember-disable-prototype-extensions": "^1.0.0",
     "ember-try": "0.0.6"
   },
   "keywords": [
@@ -44,7 +44,7 @@
   "dependencies": {
     "body-parser": "^1.14.0",
     "clean-base-url": "^1.0.0",
-    "ember-cli": "1.13.8",
+    "ember-cli": "ember-cli/ember-cli#fba306822da476f4debd2173e83fd925a286727b",
     "ember-cli-babel": "^5.1.3",
     "exists-sync": "0.0.3",
     "express": "^4.13.3",
