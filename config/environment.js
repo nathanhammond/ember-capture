@@ -1,17 +1,35 @@
 'use strict';
 
-module.exports = function(environment, ENV) {
-  // Make the tree exist.
-  ENV.APP = ENV.APP || {};
-  ENV.APP.options = ENV.APP.options || {};
-  ENV.APP.options['ember-cli-qunit'] = ENV.APP.options['ember-cli-qunit'] || {};
-  ENV.APP.options['ember-capture'] = ENV.APP.options['ember-capture'] || {};
+module.exports = function(environment, config) {
 
-  // FIXME: We should be more clever about how we assign rootElement.
-  if (environment === 'capture' || environment === 'test') {
-    ENV.APP.options['ember-cli-qunit'].disableContainerStyles = true;
-    ENV.APP.rootElement = ENV.APP.options['ember-capture'].rootElement || ENV.APP.rootElement;
+  // Check to see if the user passed in settings.
+  var captureRootElement;
+  if (config && config.APP && config.APP.options && config.APP.options['ember-capture']) {
+    captureRootElement = config.APP.options['ember-capture'].rootElement;
   }
 
-  return ENV;
+  // Use the setting, or the default, 'body'.
+  captureRootElement = captureRootElement || 'body';
+
+  var qunitRootElement;
+  if (config && config.APP && config.APP.options && config.APP.options['ember-cli-qunit']) {
+    qunitRootElement = config.APP.options['ember-cli-qunit'].rootElement;
+  }
+
+  var appRootElement;
+  if (config && config.APP) {
+    appRootElement = config.APP.rootElement;
+  }
+
+  if (environment === 'capture') {
+    return { APP: { rootElement: appRootElement || captureRootElement } };
+  }
+
+  // Because the tests are always built in the test environment we have to get clever.
+  // We're after ember-cli-qunit in the DAG, so we have to override anything that it set.
+  if (environment === 'test' && qunitRootElement === appRootElement || qunitRootElement === undefined) {
+    return { APP: { rootElement: captureRootElement } };
+  }
+
+  return {};
 };
